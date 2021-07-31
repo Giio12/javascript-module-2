@@ -40,14 +40,26 @@ Task 3
 
 Write JavaScript below that changes the background colour of the page when the 'Change colour' button is clicked.
 */
-let buttonChangeColor = document.getElementById('bgrChangeBtn');
-buttonChangeColor.addEventListener("click", changeColor);
+// const buttonChangeColor = document.getElementById('bgrChangeBtn');
+// buttonChangeColor.addEventListener("click", changeColor);
 
-function changeColor(event) {
+// function changeColor(event,color) {
+//     event.preventDefault()
+//     const body = document.querySelector('body')
+//     body.style.backgroundColor ='orange'
+// }
+let buttonChangeColor = document.getElementById('bgrChangeBtn');
+// buttonChangeColor.addEventListener("click", event => {
+//     changeColor(event, 'orange')
+// });
+
+function changeColor(event, color) {
     event.preventDefault()
     const body = document.querySelector('body')
-    body.style.backgroundColor = 'orange'
+    body.style.backgroundColor = color
 }
+
+
 
 /*
 Task 4
@@ -56,14 +68,18 @@ Task 4
 When a user clicks the ‘Add some text’ button, a new paragraph should be added inside the section that says “LEARN MORE”
 */
 const buttonAddText = document.getElementById('addTextBtn');
-buttonAddText.addEventListener("click", addText);
+buttonAddText.addEventListener("click", event => {
+    addText(event, '');
+})
 
-function addText(event,text) {
+function addText(event, text) {
     event.preventDefault()
     const articles = document.getElementById('mainArticles')
     const p = document.createElement('p')
     articles.appendChild(p)
+    p.innerText = text
 }
+
 
 
 /*
@@ -74,7 +90,7 @@ When the 'Larger links!' button is clicked, the text of all links on the page sh
 */
 const buttonLargerLinks = document.getElementById('largerLinksBtn');
 buttonLargerLinks.addEventListener("click", largerLinks);
-let size = 12;
+let size = 14;
 
 function largerLinks(event) {
     event.preventDefault()
@@ -94,30 +110,30 @@ Using the same function in Task 4,
 When the 'Add' button is clicked, get the text inside the input field and create a new paragraph in the "LEARN MORE" section
 Also clear the text inside the input field
 */
-const buttonAddTextInput = document.getElementById('addArticleBtn');
-buttonLargerLinks.addEventListener("click",addText);
+const buttonAddArticle = document.getElementById('addArticleBtn')
+const inputText = document.querySelector('input');
+buttonAddArticle.addEventListener("click", event => {
+    addText(event, inputText.value)
+    inputText.value = ''
+})
 
-const inputText= document.querySelectorAll('input')
-addText(event,inputText.value)
 /*
 Task 7
 ======
 
 Create an array of 5 different colors.
 Using the same function in Task 3, every time the 'Change colour' button is clicked, the background color will be changed with the next color in the array.
-The next color when you are in the last color of the array will be the first color again.
-*/
-// let buttonChangeColor = document.getElementById('bgrChangeBtn');
-// buttonChangeColor.addEventListener("click", changeColor);
-// const colors = ['orange', 'blue', 'yellow', 'green', 'purple']
+The next color when you are in the last color of the array will be the first color again.*/
+let colors = ['green', 'orange', 'blue', 'purple', 'yellow']
+buttonChangeColor.addEventListener("click", event => {
+    const body = document.querySelector('body')
+    let currentColor = body.style.backgroundColor
+    let currentColorIndex = colors.indexOf(currentColor)
+    currentColorIndex++
 
-// function changeColor(event) {
-//     event.preventDefault()
+    if (currentColorIndex == colors.length) {
+        currentColorIndex = 0
+    }
 
-//     colors.forEach(color => {
-
-//         const body = document.querySelector('body')
-//         color.style.backgroundColor = color
-//     })
-
-// }
+    changeColor(event, colors[currentColorIndex])
+});
