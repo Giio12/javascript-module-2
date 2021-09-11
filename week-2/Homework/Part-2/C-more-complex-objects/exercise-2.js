@@ -14,8 +14,15 @@ let house = {
 };
 
 let newCurrentOwner = {
-  firstName: "Georgina",
-  lastName: "Hernandez",
+  firstName: "Margaret",
+  lastName: "Conway",
+};
+
+ house = {
+  address: "1 Kinning Park",
+  previousOwners: ["Claire M.", "Stephen B."],
+  currentOwner:newCurrentOwner,
+  isForSale: false
 };
 
 /*

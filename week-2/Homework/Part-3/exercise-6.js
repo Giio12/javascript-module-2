@@ -99,5 +99,23 @@ var mentors = [
 
 ];
 
-//YOUR CODE HERE
+//**1. Loop through the array, and for each object, `console.log()` out the sentence only for
+//**mentors that are in Barcelona and one of the skills is React
+//**"Hi, my name is {firstName} {lastName}. I work in Barcelona and i know React."
 
+mentors.forEach(mentor=>{
+  if(mentor.job.city==="Barcelona"&& mentor.skills.includes('React')){
+console.log(`Hi, my name is ${mentor.firstName} ${mentor.lastName}. I work in Barcelona and i know React.`)
+  }
+})
+
+//**2. To those that work in Barcelona, set "Jun1" in the class attribute, 
+//**and add a new skill to the list "SQL".
+//**To add elements in an array you can use .push()
+//**var animals = ["dog","cat"];
+//**animals.push("horse"); //["dog","cat","horse"]
+mentors.forEach(mentor=>{
+  if(mentor.job.city==="Barcelona")
+  mentor.class="Jun1"
+  mentor.skills.push('SQL')
+})

@@ -11,3 +11,9 @@ let laptop = {
     screenSize: 13,
     isTouchscreen: true,
   };
+
+  let laptop = {
+    brand: "Acer",
+    screenSize: 23,
+    isTouchscreen: false,
+  };

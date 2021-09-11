@@ -13,6 +13,14 @@ let house = {
   },
 };
 
+ house = {
+  address: "51 Berkley Road",
+  previousOwners: ["Brian M.", "Fiona S."],
+  currentOwner: {
+    firstName: "Margaret",
+    lastName: "Montgomery",
+  },
+};
 /*
   DO NOT EDIT ANYTHING ABOVE THIS LINE
 

@@ -6,6 +6,10 @@ var dog = {
     name: 'Billy',
     wantsToPlay: false
 };
+var dog = {
+    name: 'Rex',
+    wantsToPlay: true
+};
 
 // WRITE CODE HERE
 

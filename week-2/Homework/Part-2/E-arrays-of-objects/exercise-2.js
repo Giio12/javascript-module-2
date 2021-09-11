@@ -40,16 +40,31 @@ WRITE YOUR CODE BELOW
 */
 
 
-let destinationNamesWithin500Kms = // Complete here
+let destinationNamesWithin500Kms = travelDestinations.map(travelDestination => {
+    if (travelDestination.distanceKms <= 500) {
+        return travelDestination.destinationName
+    }; 
+})
+let destinationNameReachableByFerry = travelDestinations.map(travelDestination => {
+    if (travelDestination.transportations.includes('ferry')) {
+        return (travelDestination.destinationName)
+    }; 
+})// Complete here
 
-let destinationNameReachableByFerry = // Complete here
+let destinationNamesMoreThan300KmsAwayByTrain = travelDestinations.map(travelDestination=>{
 
-let destinationNamesMoreThan300KmsAwayByTrain = // Complete here (PRINT THE RESULT IN THE CONSOLE USING FOREACH)
+if(travelDestination.distanceKms>=300 && travelDestination.transportations.includes('train')){
+  return travelDestination.destinationName
+
+}
+// Complete here (PRINT THE RESULT IN THE CONSOLE USING FOREACH)
 
 
-/*
-DO NOT EDIT ANYTHING BELOW THIS LINE
-*/
+})
+
+        /*
+        DO NOT EDIT ANYTHING BELOW THIS LINE
+        */
 
 console.log(`Question 1) Expected result: Edinburgh,Dublin, actual result: ${destinationNamesWithin500Kms}`);
 console.log(`Question 2) Expected result: Dublin, actual result: ${destinationNameReachableByFerry}`);

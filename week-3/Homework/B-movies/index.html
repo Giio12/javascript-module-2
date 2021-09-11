@@ -18,6 +18,13 @@
 <body>
   <div id="main">
     <div class="jumbotron">
+      <form id="frm1" >
+        <input type="text" id="title" name="title" placeholder="Title Movie">
+        <input type="text" id="director" placeholder="Director">
+        <input type="text" id="type"placeholder="Type">
+        <input type="text" id="watched"placeholder="haveWatched">
+        <input type="button" onclick="addMovies()" value="Submit">
+      </form>
       <h1>My movies</h1>
       <div id="all-movies">
         <p class="alert alert-info">Number of movies: <span id="movies-number"></span></p>

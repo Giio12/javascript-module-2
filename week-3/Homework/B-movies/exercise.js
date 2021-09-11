@@ -31,8 +31,7 @@ TIP: Use the functions you created on tasks 1-3
 
 ================
 */
-var movies = [
-  {
+var movies = [{
     title: "Color Out of Space",
     director: "Richard Stanley",
     type: "sci-fi",
@@ -58,10 +57,42 @@ var movies = [
   },
 ];
 
-// create showMovies function
+function showMovies() {
+  allMovies = document.getElementById('all-movies')
+  document.querySelectorAll('#all-movies p:not(.alert)').forEach( //busca los p que no sean clase alert
+    element => element.remove()
+  )
+  movies.forEach(movie => {
+    p = document.createElement('p')
+    allMovies.appendChild(p)
+    p.innerText = `${movie.title} - ${movie.director}`
+  })
+  moviesNumber = document.querySelector('#movies-number')
+  moviesNumber.innerText = movies.length
+}
 
+s = setTimeout(() => showMovies(), 1000)
 
 // create a new movie object for your favorite movie
 
-
+// const newMovie = {
+//   title: "Alicia en el Pais de las maravillas",
+//   director: "Clyde Geronimi",
+//   type: "animation",
+//   haveWatched: true,
+// }
+title=document.getElementById('title')
+const newMovie = {
+  title: title.value,
+  director:title.value,
+  type: title.value,
+  haveWatched: title.value,
+}
 // create addMovies function
+function addMovies(movie) {
+  setTimeout(() => {
+    movies.push(movie)
+    showMovies()
+  }, 2000)
+}
+addMovies(newMovie)
