@@ -103,9 +103,9 @@ var mentors = [
 //**mentors that are in Barcelona and one of the skills is React
 //**"Hi, my name is {firstName} {lastName}. I work in Barcelona and i know React."
 
-mentors.forEach(mentor=>{
-  if(mentor.job.city==="Barcelona"&& mentor.skills.includes('React')){
-console.log(`Hi, my name is ${mentor.firstName} ${mentor.lastName}. I work in Barcelona and i know React.`)
+mentors.forEach(mentor => {
+  if (mentor.job.city === "Barcelona" && mentor.skills.includes('React')) {
+    console.log(`Hi, my name is ${mentor.firstName} ${mentor.lastName}. I work in Barcelona and i know React.`)
   }
 })
 
@@ -114,8 +114,88 @@ console.log(`Hi, my name is ${mentor.firstName} ${mentor.lastName}. I work in Ba
 //**To add elements in an array you can use .push()
 //**var animals = ["dog","cat"];
 //**animals.push("horse"); //["dog","cat","horse"]
-mentors.forEach(mentor=>{
-  if(mentor.job.city==="Barcelona")
-  mentor.class="Jun1"
+mentors.forEach(mentor => {
+  if (mentor.job.city === "Barcelona")
+    mentor.class = "Jun1"
   mentor.skills.push('SQL')
 })
+
+//**3. Create an object method with the name .addSkill() to be able to add skills from it */
+
+function addSkillMethod() {
+  mentors.forEach(mentor => {
+    mentor.addSkill = function addSkills(skill) {
+      this.skills.push(...skill) //Utilizo 3 puntos para agregar varios skills en uno solo 
+    }
+  })
+}
+addSkillMethod()
+// mentors[0].addSkill(['Photoshop','Css'])
+console.log(mentors[0]) // PARA COMPROBAR SI AGREGA EL SKILL 
+
+
+
+//**4. Create a function to add a skill to all members in a list of mentors */
+
+function addSk(mentors, newSkill) {
+  mentors.forEach(mentor => {
+    mentor.addSkill(newSkill)
+  })
+
+}
+addSk(mentors, ['Ajedrez']) // El nuevo skill se agrega entrecorchetes porque utilice en el metodo un spread por si son varios skills
+console.log(mentors)
+
+
+//**5. Create a function to remove a skill to all members in a list of mentors
+
+// function removeSkill(skill) {
+//   mentors.forEach(mentor => {
+//     if (mentor.skills.includes(skill)) {
+//       i = (mentor.skills.indexOf(skill)) //Declaro i para tener un indice de donde se encuentra el skill y poder removerlo
+//       mentor.skills.splice(i, 1);
+//     }
+//   })
+
+// }
+// removeSkill('React')
+// console.log(mentors) //PRUEBA
+
+//**6. Create a function mentorWithMoreSkills() that returns the name of the mentor with more number of skills
+
+// function mentorWithMoreSkills() {
+//   let numSkills= []
+//   mentors.forEach(mentor=>{
+//     numSkills.push(mentor.skills.length)
+//   })
+//   const moreSkill= Math.max(...numSkills)
+//   mentors.forEach(mentor=>{
+//     if(mentor.skills.length===moreSkill){
+//     console.log(`${mentor.firstName} is the mentor with more skills`)
+//     }
+//   })
+// }
+// mentorWithMoreSkills()
+
+//**7. Create an object method .addStudentLikes() that increments by one the attribute studentLikes
+
+// function addStudentLikes() {
+//   mentors.forEach(mentor=>{
+//     mentor.addStudentLike = function addLikes(like) {
+//       this.studentLikes+=like
+//     }
+//   })
+// }
+// addStudentLikes()
+// mentors[0].addStudentLike(1)//AGREGA EL LIKE SOLO AL QUE SE INDICA
+// console.log(mentors)// PARA COMPROBAR SI AGREGA EL LIKE
+
+// *8. Create a function that adds a student like to all mentors in the array
+// function addStudentLik(mentors, like) {
+//   mentors.forEach(mentor => {
+//     mentor.addStudentLike(like) //LLAMA AL METODO FUNCION DE LA TAREA 7
+//   })
+
+// }
+// addStudentLik(mentors, 2) //AGREGA DOS LIKES A TODOS LOS MENTORES
+// console.log(mentors) //PARA COMPROBAR SI AUMENTA

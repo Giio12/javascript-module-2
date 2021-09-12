@@ -41,9 +41,23 @@ var product2 = {
   price: 9.99,
   stock: 2
 };
+var product3 = {
+  id: 3,
+  name: "Samsung Galaxy A12",
+  price: 179,
+  stock: 5
+};
+var product4 = {
+  id: 4,
+  name: "Auriculares Sony",
+  price: 229.89,
+  stock: 10
+};
 
 products.push(product1);
 products.push(product2);
+products.push(product3);
+products.push(product4);
 
 var shoppingCart = {
   totalPrice: 0,
@@ -51,15 +65,29 @@ var shoppingCart = {
 };
 
 function addToShoppingCart(id){
+products.forEach(product=>{
+  if(id===product.id && product.stock>=1){
+    shoppingCart.selectedProducts.push(product)
+    shoppingCart.totalPrice+= product.price
+  }
+})
+}
+function removeFromShoppingCart(id) {
+  const remove = shoppingCart.selectedProducts.filter(product => product.id != id);
+  shoppingCart.selectedProducts = remove
 
 }
 
-function removeFromShoppingCart(id){
-
-}
-
-function shop(){
-
+function shop() {
+  products.forEach((product, i) => {
+    shoppingCart.selectedProducts.forEach(shop => {
+      if (product.name.includes(shop.name)) {
+        product.stock--
+      }
+    })
+  })
+  shoppingCart.selectedProducts = []
+  shoppingCart.totalPrice = 0
 }
 
 //results
